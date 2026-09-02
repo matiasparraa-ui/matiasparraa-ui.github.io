@@ -1228,7 +1228,13 @@
         Plan semanal (clase recurrente cada semana) — $13.000/hora/persona
       </label>
 
+      <label style="display:none; align-items:center; gap:8px; margin-top:12px; font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;" id="intensivo-label">
+        <input type="checkbox" id="intensivo" style="width:16px; height:16px; accent-color:var(--accent);">
+        Plan Intensivo C1 (prep. control) — módulos de 1:30 hrs
+      </label>
+
       <p class="fine-print" style="margin-top:10px; text-align:left;">Horario disponible: todos los días, 8:30–23:00. Modalidad 100% online.</p>
+      <p class="fine-print" style="margin-top:10px; text-align:left; display:none;" id="intensivo-note">Plan Intensivo C1: módulos de 1:30 horas, solo sábado en la noche (desde las 18:00) y domingo todo el día. $13.000 por persona · $9.000 c/u (2 personas) · $8.000 c/u (3 personas), etc.</p>
     </div>
 
     <div class="card reveal">
@@ -1309,7 +1315,7 @@
   </footer>
 </div>
 
-<script id="booking-state" type="application/json">{"bookings": [{"id": "b_admin_1", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Cálculo", "fecha": "2026-08-31", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_2", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-08-31", "hora": "18:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Trini", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_3", "tipo": "universitario", "area": "DFI", "curso": "Física Clásica", "fecha": "2026-09-01", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Cata", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_4", "tipo": "universitario", "area": "DIM", "curso": "Álgebra Lineal", "fecha": "2026-09-01", "hora": "15:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Camila", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_5", "tipo": "universitario", "area": "DIM", "curso": "Álgebra Lineal", "fecha": "2026-09-01", "hora": "16:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Trini", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_6b", "tipo": "universitario", "area": "DFI", "curso": "Física Clásica", "fecha": "2026-09-02", "hora": "19:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_7", "tipo": "universitario", "area": "DFI", "curso": "Mecánica", "fecha": "2026-09-03", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Francisca", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_8", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-09-03", "hora": "15:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Camila", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_9", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Cálculo", "fecha": "2026-09-03", "hora": "20:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_10", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-09-04", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Olivia", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_11", "tipo": "universitario", "area": "DFI", "curso": "Física Moderna", "fecha": "2026-09-04", "hora": "16:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Martín", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_12", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Álgebra", "fecha": "2026-09-05", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_13", "tipo": "universitario", "area": "Especialidad", "curso": "Análisis Estructural", "fecha": "2026-09-05", "hora": "15:00", "duracion": "2", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Luis", "whatsapp": "", "correo": "", "comentario": "", "total": 30000, "createdAt": "2026-09-01T00:00:00.000Z"}]}</script>
+<script id="booking-state" type="application/json">{"bookings": [{"id": "b_admin_1", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Cálculo", "fecha": "2026-08-31", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_2", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-08-31", "hora": "18:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Trini", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_3", "tipo": "universitario", "area": "DFI", "curso": "Física Clásica", "fecha": "2026-09-01", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Cata", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_4", "tipo": "universitario", "area": "DIM", "curso": "Álgebra Lineal", "fecha": "2026-09-01", "hora": "15:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Camila", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_5", "tipo": "universitario", "area": "DIM", "curso": "Álgebra Lineal", "fecha": "2026-09-01", "hora": "16:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Trini", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_6c", "tipo": "universitario", "area": "DFI", "curso": "Física Clásica", "fecha": "2026-09-02", "hora": "09:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_7", "tipo": "universitario", "area": "DFI", "curso": "Mecánica", "fecha": "2026-09-03", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Francisca", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_10", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-09-04", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Olivia", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_11", "tipo": "universitario", "area": "DFI", "curso": "Física Moderna", "fecha": "2026-09-04", "hora": "16:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Martín", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_8", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-09-04", "hora": "17:30", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Camila", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_12", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Álgebra", "fecha": "2026-09-05", "hora": "12:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_13", "tipo": "universitario", "area": "Especialidad", "curso": "Análisis Estructural", "fecha": "2026-09-05", "hora": "15:00", "duracion": "2", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Luis", "whatsapp": "", "correo": "", "comentario": "", "total": 30000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_19", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Cálculo", "fecha": "2026-09-02", "hora": "20:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Matías", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_20", "tipo": "universitario", "area": "DIM", "curso": "Introducción al Cálculo", "fecha": "2026-09-03", "hora": "20:00", "duracion": "1", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Jaz", "whatsapp": "", "correo": "", "comentario": "", "total": 15000, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_21", "tipo": "universitario", "area": "DIM", "curso": "Cálculo Diferencial e Integral", "fecha": "2026-09-05", "hora": "09:30", "duracion": "1.5", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Valentina", "whatsapp": "", "correo": "", "comentario": "", "total": 22500, "createdAt": "2026-09-01T00:00:00.000Z"}, {"id": "b_admin_22", "tipo": "universitario", "area": "DFI", "curso": "Termodinámica", "fecha": "2026-09-05", "hora": "13:00", "duracion": "1.5", "personas": 1, "esSemanal": false, "unit": 15000, "nombre": "Ignacio", "whatsapp": "", "correo": "", "comentario": "", "total": 22500, "createdAt": "2026-09-01T00:00:00.000Z"}]}</script>
 
 <script>
 (function () {
@@ -1326,7 +1332,23 @@
   ];
   var WEEKLY_PRICE = 13000;
 
-  function pricePerPersonHour(tipoPrice, personas, esSemanal) {
+  var INTENSIVO_PRICE = 13000;
+  var INTENSIVO_DURACION = "1.5";
+  var INTENSIVO_PRICE_TIERS = [
+    { min: 4, price: 7000 },
+    { min: 3, price: 8000 },
+    { min: 2, price: 9000 }
+  ];
+
+  function pricePerPersonHour(tipoPrice, personas, esSemanal, esIntensivo) {
+    if (esIntensivo) {
+      if (personas >= 2) {
+        for (var j = 0; j < INTENSIVO_PRICE_TIERS.length; j++) {
+          if (personas >= INTENSIVO_PRICE_TIERS[j].min) return INTENSIVO_PRICE_TIERS[j].price;
+        }
+      }
+      return INTENSIVO_PRICE;
+    }
     if (personas >= 2) {
       for (var i = 0; i < GROUP_PRICE_TIERS.length; i++) {
         if (personas >= GROUP_PRICE_TIERS[i].min) return GROUP_PRICE_TIERS[i].price;
@@ -1381,6 +1403,8 @@
       "Bachiller": ["Matemáticas I", "Matemáticas II", "Física I", "Física II", "Economía"]
     }
   };
+
+  var INTENSIVO_CURSO = "Introducción al Cálculo";
 
   // ---- shared state (embedded in a JSON island, replaced on publish) ----
   var STATE = { bookings: [] };
@@ -1512,6 +1536,40 @@
     plus.addEventListener("click", function () { set(parseInt(hidden.value, 10) + 1); });
   }
 
+  // ---------- Plan Intensivo C1 (solo cuando el curso es Introducción al Cálculo) ----------
+  function intensivoAvailable() {
+    return currentTipoId() === "universitario" && document.getElementById("curso").value === INTENSIVO_CURSO;
+  }
+  function isIntensivoActive() {
+    return intensivoAvailable() && document.getElementById("intensivo").checked;
+  }
+
+  function syncIntensivoConstraints() {
+    var available = intensivoAvailable();
+    var intensivoInput = document.getElementById("intensivo");
+    var intensivoLabel = document.getElementById("intensivo-label");
+    intensivoLabel.style.display = available ? "flex" : "none";
+    if (!available) intensivoInput.checked = false;
+
+    var active = available && intensivoInput.checked;
+
+    var duracionSel = document.getElementById("duracion");
+    Array.prototype.forEach.call(duracionSel.options, function (opt) {
+      opt.disabled = active && opt.value !== INTENSIVO_DURACION;
+    });
+    if (active) duracionSel.value = INTENSIVO_DURACION;
+
+    var semanalInput = document.getElementById("semanal");
+    var personas = parseInt(document.getElementById("personas").value, 10) || 1;
+    semanalInput.disabled = active || personas >= 2;
+    semanalInput.closest("label").style.opacity = semanalInput.disabled ? 0.5 : 1;
+    intensivoInput.disabled = semanalInput.checked && !active;
+    intensivoLabel.style.opacity = intensivoInput.disabled ? 0.5 : 1;
+
+    document.getElementById("intensivo-note").style.display = active ? "block" : "none";
+    document.getElementById("grupo-note").style.display = active ? "none" : "block";
+  }
+
   // ---------- price summary ----------
   function currentTipo() {
     var checked = document.querySelector('input[name="tipo"]:checked');
@@ -1523,8 +1581,9 @@
     var personas = parseInt(document.getElementById("personas").value, 10) || 1;
     var duracion = parseFloat(document.getElementById("duracion").value) || 1;
     var esSemanal = document.getElementById("semanal").checked;
-    var unit = pricePerPersonHour(tipo.price, personas, esSemanal);
-    var total = unit * personas * duracion;
+    var esIntensivo = isIntensivoActive();
+    var unit = pricePerPersonHour(tipo.price, personas, esSemanal, esIntensivo);
+    var total = esIntensivo ? (unit * personas) : (unit * personas * duracion);
 
     var amtEl = document.getElementById("summary-amt");
     var prevText = amtEl.textContent;
@@ -1535,13 +1594,14 @@
       amtEl.classList.add("bump");
     }
 
-    var note = personas >= 2 ? " (precio grupal)" : (esSemanal ? " (plan semanal)" : "");
-    document.getElementById("summary-breakdown").textContent =
-      money(unit) + " × " + personas + (personas === 1 ? " persona" : " personas") + " × " + duracion + (duracion == 1 ? " hora" : " horas") + note;
+    var note = esIntensivo ? " (plan intensivo, módulo de 1:30 hrs)" : (personas >= 2 ? " (precio grupal)" : (esSemanal ? " (plan semanal)" : ""));
+    document.getElementById("summary-breakdown").textContent = esIntensivo
+      ? (money(unit) + " × " + personas + (personas === 1 ? " persona" : " personas") + note)
+      : (money(unit) + " × " + personas + (personas === 1 ? " persona" : " personas") + " × " + duracion + (duracion == 1 ? " hora" : " horas") + note);
 
     var semanalField = document.getElementById("semanal");
-    semanalField.disabled = personas >= 2;
-    semanalField.closest("label").style.opacity = personas >= 2 ? 0.5 : 1;
+    semanalField.disabled = personas >= 2 || esIntensivo;
+    semanalField.closest("label").style.opacity = semanalField.disabled ? 0.5 : 1;
   }
 
   // ---------- slots list ----------
@@ -1800,13 +1860,14 @@
     var hora = document.getElementById("hora").value;
     var duracion = document.getElementById("duracion").value;
     var personas = parseInt(document.getElementById("personas").value, 10) || 1;
-    var esSemanal = document.getElementById("semanal").checked && personas < 2;
+    var esIntensivo = isIntensivoActive();
+    var esSemanal = document.getElementById("semanal").checked && personas < 2 && !esIntensivo;
     var nombre = document.getElementById("nombre").value.trim();
     var whatsapp = document.getElementById("whatsapp").value.trim();
     var correo = document.getElementById("correo").value.trim();
     var comentario = document.getElementById("comentario").value.trim();
-    var unit = pricePerPersonHour(tipo.price, personas, esSemanal);
-    var total = unit * personas * parseFloat(duracion);
+    var unit = pricePerPersonHour(tipo.price, personas, esSemanal, esIntensivo);
+    var total = esIntensivo ? (unit * personas) : (unit * personas * parseFloat(duracion));
 
     return {
       id: "b_" + Date.now() + "_" + Math.random().toString(36).slice(2, 8),
@@ -1818,6 +1879,7 @@
       duracion: duracion,
       personas: personas,
       esSemanal: esSemanal,
+      esIntensivo: esIntensivo,
       unit: unit,
       nombre: nombre,
       whatsapp: whatsapp,
@@ -1836,6 +1898,11 @@
     if (!b.whatsapp || b.whatsapp.replace(/\D/g, "").length < 8) return "Escribe un número de WhatsApp válido.";
     if (!b.comentario) return "Cuéntame brevemente qué necesitas en el comentario.";
     if (slotTaken(b.fecha, b.hora, b.duracion)) return "Ese horario ya está confirmado. Elige otro.";
+    if (b.esIntensivo) {
+      var dow = new Date(b.fecha + "T00:00:00").getDay(); // 0 dom ... 6 sáb
+      if (dow !== 0 && dow !== 6) return "El Plan Intensivo C1 solo está disponible el sábado en la noche y el domingo.";
+      if (dow === 6 && parseHoraFloat(b.hora) < 18) return "El sábado el Plan Intensivo C1 solo está disponible en la noche (desde las 18:00).";
+    }
     return null;
   }
 
@@ -2037,9 +2104,21 @@
 
     document.getElementById("tipo-group").addEventListener("change", function () {
       renderAreaCurso();
+      syncIntensivoConstraints();
+      renderHoraOptions();
       updateSummary();
     });
-    document.getElementById("area").addEventListener("change", renderCursoOptions);
+    document.getElementById("area").addEventListener("change", function () {
+      renderCursoOptions();
+      syncIntensivoConstraints();
+      renderHoraOptions();
+      updateSummary();
+    });
+    document.getElementById("curso").addEventListener("change", function () {
+      syncIntensivoConstraints();
+      renderHoraOptions();
+      updateSummary();
+    });
     document.getElementById("fecha").addEventListener("change", function () {
       renderHoraOptions();
       updateSummary();
@@ -2048,7 +2127,16 @@
       renderHoraOptions();
       updateSummary();
     });
-    document.getElementById("semanal").addEventListener("change", updateSummary);
+    document.getElementById("semanal").addEventListener("change", function () {
+      syncIntensivoConstraints();
+      updateSummary();
+    });
+    document.getElementById("intensivo").addEventListener("change", function () {
+      syncIntensivoConstraints();
+      renderHoraOptions();
+      updateSummary();
+    });
+    syncIntensivoConstraints();
     updateSummary();
 
     document.getElementById("booking-form").addEventListener("submit", onSubmit);

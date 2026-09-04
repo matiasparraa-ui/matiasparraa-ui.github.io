@@ -1233,8 +1233,14 @@
         Plan Intensivo C1 (prep. control) — módulos de 1:30 hrs
       </label>
 
+      <label style="display:none; align-items:center; gap:8px; margin-top:12px; font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;" id="intensivo-fis-label">
+        <input type="checkbox" id="intensivo-fis" style="width:16px; height:16px; accent-color:var(--accent);">
+        Plan Intensivo Física (prep. control) — $12.000/hora
+      </label>
+
       <p class="fine-print" style="margin-top:10px; text-align:left;">Horario disponible: todos los días, 8:30–23:00. Modalidad 100% online.</p>
       <p class="fine-print" style="margin-top:10px; text-align:left; display:none;" id="intensivo-note">Plan Intensivo C1: módulos de 1:30 horas, solo sábado en la noche (desde las 18:00) y domingo todo el día. $13.000 por persona · $9.000 c/u (2 personas) · $8.000 c/u (3 personas), etc.</p>
+      <p class="fine-print" style="margin-top:10px; text-align:left; display:none;" id="intensivo-fis-note">Plan Intensivo Física: $12.000/hora (1 persona) · $6.500/hora c/u (2 personas) · $4.500/hora c/u (3+ personas).</p>
     </div>
 
     <div class="card reveal">
@@ -1340,7 +1346,13 @@
     { min: 2, price: 9000 }
   ];
 
-  function pricePerPersonHour(tipoPrice, personas, esSemanal, esIntensivo) {
+  var INTENSIVO_FIS_PRICE = 12000;
+  var INTENSIVO_FIS_PRICE_TIERS = [
+    { min: 3, price: 4500 },
+    { min: 2, price: 6500 }
+  ];
+
+  function pricePerPersonHour(tipoPrice, personas, esSemanal, esIntensivo, esIntensivoFis) {
     if (esIntensivo) {
       if (personas >= 2) {
         for (var j = 0; j < INTENSIVO_PRICE_TIERS.length; j++) {
@@ -1348,6 +1360,14 @@
         }
       }
       return INTENSIVO_PRICE;
+    }
+    if (esIntensivoFis) {
+      if (personas >= 2) {
+        for (var k = 0; k < INTENSIVO_FIS_PRICE_TIERS.length; k++) {
+          if (personas >= INTENSIVO_FIS_PRICE_TIERS[k].min) return INTENSIVO_FIS_PRICE_TIERS[k].price;
+        }
+      }
+      return INTENSIVO_FIS_PRICE;
     }
     if (personas >= 2) {
       for (var i = 0; i < GROUP_PRICE_TIERS.length; i++) {
@@ -1405,6 +1425,7 @@
   };
 
   var INTENSIVO_CURSO = "Introducción al Cálculo";
+  var INTENSIVO_FIS_AREA = "DFI";
 
   // ---- shared state (embedded in a JSON island, replaced on publish) ----
   var STATE = { bookings: [] };
@@ -1536,12 +1557,18 @@
     plus.addEventListener("click", function () { set(parseInt(hidden.value, 10) + 1); });
   }
 
-  // ---------- Plan Intensivo C1 (solo cuando el curso es Introducción al Cálculo) ----------
+  // ---------- Planes Intensivos (solo cuando el curso/área calza) ----------
   function intensivoAvailable() {
     return currentTipoId() === "universitario" && document.getElementById("curso").value === INTENSIVO_CURSO;
   }
   function isIntensivoActive() {
     return intensivoAvailable() && document.getElementById("intensivo").checked;
+  }
+  function intensivoFisAvailable() {
+    return currentTipoId() === "universitario" && document.getElementById("area").value === INTENSIVO_FIS_AREA;
+  }
+  function isIntensivoFisActive() {
+    return intensivoFisAvailable() && document.getElementById("intensivo-fis").checked;
   }
 
   function syncIntensivoConstraints() {
@@ -1551,7 +1578,17 @@
     intensivoLabel.style.display = available ? "flex" : "none";
     if (!available) intensivoInput.checked = false;
 
+    var availableFis = intensivoFisAvailable();
+    var intensivoFisInput = document.getElementById("intensivo-fis");
+    var intensivoFisLabel = document.getElementById("intensivo-fis-label");
+    intensivoFisLabel.style.display = availableFis ? "flex" : "none";
+    if (!availableFis) intensivoFisInput.checked = false;
+
+    // mutuamente excluyentes entre sí
+    if (intensivoInput.checked && intensivoFisInput.checked) intensivoFisInput.checked = false;
+
     var active = available && intensivoInput.checked;
+    var activeFis = availableFis && intensivoFisInput.checked;
 
     var duracionSel = document.getElementById("duracion");
     Array.prototype.forEach.call(duracionSel.options, function (opt) {
@@ -1561,13 +1598,16 @@
 
     var semanalInput = document.getElementById("semanal");
     var personas = parseInt(document.getElementById("personas").value, 10) || 1;
-    semanalInput.disabled = active || personas >= 2;
+    semanalInput.disabled = active || activeFis || personas >= 2;
     semanalInput.closest("label").style.opacity = semanalInput.disabled ? 0.5 : 1;
-    intensivoInput.disabled = semanalInput.checked && !active;
+    intensivoInput.disabled = (semanalInput.checked && !active) || activeFis;
     intensivoLabel.style.opacity = intensivoInput.disabled ? 0.5 : 1;
+    intensivoFisInput.disabled = (semanalInput.checked && !activeFis) || active;
+    intensivoFisLabel.style.opacity = intensivoFisInput.disabled ? 0.5 : 1;
 
     document.getElementById("intensivo-note").style.display = active ? "block" : "none";
-    document.getElementById("grupo-note").style.display = active ? "none" : "block";
+    document.getElementById("intensivo-fis-note").style.display = activeFis ? "block" : "none";
+    document.getElementById("grupo-note").style.display = (active || activeFis) ? "none" : "block";
   }
 
   // ---------- price summary ----------
@@ -1582,7 +1622,8 @@
     var duracion = parseFloat(document.getElementById("duracion").value) || 1;
     var esSemanal = document.getElementById("semanal").checked;
     var esIntensivo = isIntensivoActive();
-    var unit = pricePerPersonHour(tipo.price, personas, esSemanal, esIntensivo);
+    var esIntensivoFis = isIntensivoFisActive();
+    var unit = pricePerPersonHour(tipo.price, personas, esSemanal, esIntensivo, esIntensivoFis);
     var total = esIntensivo ? (unit * personas) : (unit * personas * duracion);
 
     var amtEl = document.getElementById("summary-amt");
@@ -1594,13 +1635,13 @@
       amtEl.classList.add("bump");
     }
 
-    var note = esIntensivo ? " (plan intensivo, módulo de 1:30 hrs)" : (personas >= 2 ? " (precio grupal)" : (esSemanal ? " (plan semanal)" : ""));
+    var note = esIntensivo ? " (plan intensivo, módulo de 1:30 hrs)" : (esIntensivoFis ? " (plan intensivo física)" : (personas >= 2 ? " (precio grupal)" : (esSemanal ? " (plan semanal)" : "")));
     document.getElementById("summary-breakdown").textContent = esIntensivo
       ? (money(unit) + " × " + personas + (personas === 1 ? " persona" : " personas") + note)
       : (money(unit) + " × " + personas + (personas === 1 ? " persona" : " personas") + " × " + duracion + (duracion == 1 ? " hora" : " horas") + note);
 
     var semanalField = document.getElementById("semanal");
-    semanalField.disabled = personas >= 2 || esIntensivo;
+    semanalField.disabled = personas >= 2 || esIntensivo || esIntensivoFis;
     semanalField.closest("label").style.opacity = semanalField.disabled ? 0.5 : 1;
   }
 
@@ -1861,12 +1902,13 @@
     var duracion = document.getElementById("duracion").value;
     var personas = parseInt(document.getElementById("personas").value, 10) || 1;
     var esIntensivo = isIntensivoActive();
-    var esSemanal = document.getElementById("semanal").checked && personas < 2 && !esIntensivo;
+    var esIntensivoFis = isIntensivoFisActive();
+    var esSemanal = document.getElementById("semanal").checked && personas < 2 && !esIntensivo && !esIntensivoFis;
     var nombre = document.getElementById("nombre").value.trim();
     var whatsapp = document.getElementById("whatsapp").value.trim();
     var correo = document.getElementById("correo").value.trim();
     var comentario = document.getElementById("comentario").value.trim();
-    var unit = pricePerPersonHour(tipo.price, personas, esSemanal, esIntensivo);
+    var unit = pricePerPersonHour(tipo.price, personas, esSemanal, esIntensivo, esIntensivoFis);
     var total = esIntensivo ? (unit * personas) : (unit * personas * parseFloat(duracion));
 
     return {
@@ -1880,6 +1922,7 @@
       personas: personas,
       esSemanal: esSemanal,
       esIntensivo: esIntensivo,
+      esIntensivoFis: esIntensivoFis,
       unit: unit,
       nombre: nombre,
       whatsapp: whatsapp,
@@ -2132,6 +2175,11 @@
       updateSummary();
     });
     document.getElementById("intensivo").addEventListener("change", function () {
+      syncIntensivoConstraints();
+      renderHoraOptions();
+      updateSummary();
+    });
+    document.getElementById("intensivo-fis").addEventListener("change", function () {
       syncIntensivoConstraints();
       renderHoraOptions();
       updateSummary();

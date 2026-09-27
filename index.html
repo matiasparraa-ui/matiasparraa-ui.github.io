@@ -1,4 +1,6 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Reserva tus Clases</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%238a1c1c%27/%3E%3Crect x=%273%27 y=%273%27 width=%2758%27 height=%2758%27 rx=%2711%27 fill=%27none%27 stroke=%27%23ff7a1a%27 stroke-width=%274%27/%3E%3Ctext x=%2732%27 y=%2747%27 text-anchor=%27middle%27 font-family=%27Georgia,serif%27 font-size=%2742%27 font-weight=%27700%27 fill=%27%23ffb703%27%3E%E2%88%91%3C/text%3E%3C/svg%3E">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>
 // Aplica el modo/tono guardado antes de pintar, para evitar parpadeos.
@@ -6,7 +8,8 @@
   try {
     var mode = localStorage.getItem("bkg-mode");
     var hue = localStorage.getItem("bkg-hue");
-    if (mode === "light" || mode === "dark" || mode === "gray") document.documentElement.setAttribute("data-mode", mode);
+    if (mode !== "light" && mode !== "dark" && mode !== "gray") mode = "light"; // blanco por defecto
+    document.documentElement.setAttribute("data-mode", mode);
     if (hue === "red" || hue === "blue" || hue === "green") document.documentElement.setAttribute("data-hue", hue);
   } catch (e) {}
 })();
@@ -1089,7 +1092,7 @@
     <span class="dot"></span>
     <span class="brand-text">
       <span class="brand-name">Clases Particulares</span>
-      <span class="brand-sub">FCFM · Bachillerato · PAES · Media</span>
+      <span class="brand-sub">Plan Común FCFM · Ingeniería Civil</span>
     </span>
   </a>
   <div class="social" id="nav-social"></div>
@@ -1120,7 +1123,6 @@
   <p class="lead">Elige el tipo de clase, la fecha y la hora. Al confirmar te llevo a WhatsApp para cerrar los detalles y te dejo listo el evento para tu Google Calendar.</p>
   <div class="cta-row">
     <a href="#fecha-hora" class="btn-hero primary" data-flash-target="fecha-hora">Reservar mi horario ↓</a>
-    <a href="#price-list" class="btn-hero price-cta" data-flash-target="price-list">Ver precios</a>
   </div>
   <div class="stat-row">
     <details class="stat-accordion">
@@ -1140,7 +1142,7 @@
   <details class="bio-accordion">
     <summary>¿Quién soy? <span class="chev">▾</span></summary>
     <div class="bio-body">
-      Mucho gusto, mi nombre es <b>Matías</b>, estudiante de 6to año de Ingeniería Civil Estructural de la Universidad de Chile. Con experiencia como auxiliar y ayudante universitario, ofrezco clases particulares a estudiantes de educación media y universitaria, con enfoque personalizado y planes de estudio que te harán pasar cualquier certamen ¡Y superar tus propias expectativas! Cada clase incluye una <b>pauta escrita y tipeada</b>, con ejercicios resueltos paso a paso.
+      Mucho gusto, mi nombre es <b>Matías</b>, estudiante de 6to año de Ingeniería Civil Estructural de la Universidad de Chile. Con experiencia como auxiliar y ayudante universitario, ofrezco clases particulares de Plan Común FCFM (DIM, DFI y DII) y de Ingeniería Civil (estructuras e hidráulica), con enfoque personalizado y planes de estudio que te harán pasar cualquier certamen ¡Y superar tus propias expectativas! Cada clase incluye una <b>pauta escrita y tipeada</b>, con ejercicios resueltos paso a paso.
     </div>
   </details>
 </header>
@@ -1168,21 +1170,15 @@
   <p class="steps-title reveal">Pasos que debes seguir</p>
   <form id="booking-form" novalidate>
     <div class="card reveal" id="reservar">
-      <p class="section-title"><span class="step-num">1</span>¿Qué tipo de clase necesitas?</p>
-      <fieldset id="tipo-fieldset">
+      <p class="section-title"><span class="step-num">1</span>¿Qué ramo necesitas?</p>
+      <fieldset id="tipo-fieldset" hidden>
         <legend style="position:absolute;left:-9999px;">Tipo de clase</legend>
         <div class="pill-group" id="tipo-group"></div>
       </fieldset>
 
-      <div class="price-tiles" id="price-list">
-        <div class="price-tile"><div class="amt">$15.000</div><div class="lbl">Clase individual<br>/ hora / persona</div></div>
-        <div class="price-tile"><div class="amt">$13.000</div><div class="lbl">Plan semanal<br>/ hora / persona</div></div>
-        <div class="price-tile"><div class="amt">$10.000</div><div class="lbl">Clase grupal (2+)<br>desde $7.000 con 4+</div></div>
-      </div>
-
       <div class="field-row">
         <div class="field" style="flex: 1 1 220px;">
-          <label for="area">Área</label>
+          <label for="area">Área (departamento)</label>
           <select id="area" required></select>
         </div>
         <div class="field" style="flex: 1 1 260px;">
@@ -1221,11 +1217,11 @@
           </div>
         </div>
       </div>
-      <p class="fine-print" style="margin-top:10px; text-align:left;" id="grupo-note">Grupos: $10.000 c/u (2 personas) · $8.000 c/u (3 personas) · $7.000 c/u (4+ personas), por hora.</p>
+      <p class="fine-print" style="margin-top:10px; text-align:left;" id="grupo-note">Grupos: $8.500 c/u (2 personas) · $6.000 c/u (3 o más personas), por hora.</p>
 
-      <label style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;">
+      <label hidden style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;">
         <input type="checkbox" id="semanal" style="width:16px; height:16px; accent-color:var(--accent);">
-        Plan semanal (clase recurrente cada semana) — $13.000/hora/persona
+        Plan semanal
       </label>
 
       <label style="display:none; align-items:center; gap:8px; margin-top:12px; font-size:13px; font-weight:600; color:var(--ink-soft); cursor:pointer;" id="precontrol-termo-label">
@@ -1254,7 +1250,7 @@
           <label for="whatsapp">WhatsApp</label>
           <input type="tel" id="whatsapp" placeholder="+56 9 1234 5678" required>
         </div>
-        <div class="field" style="flex: 1 1 220px;">
+        <div class="field" style="flex: 1 1 220px;" hidden>
           <label for="correo">Correo (opcional)</label>
           <input type="email" id="correo" placeholder="tu@correo.com">
         </div>
@@ -1334,13 +1330,12 @@
   var WHATSAPP_NUMBER = "56941538526";
   var INSTAGRAM_HANDLE = "_.matiparra";
 
-  var INDIVIDUAL_PRICE = 15000;
+  var INDIVIDUAL_PRICE = 14000;
   var GROUP_PRICE_TIERS = [
-    { min: 4, price: 7000 },
-    { min: 3, price: 8000 },
-    { min: 2, price: 10000 }
+    { min: 3, price: 6000 },
+    { min: 2, price: 8500 }
   ];
-  var WEEKLY_PRICE = 13000;
+  var WEEKLY_PRICE = 14000; // plan semanal desactivado
 
   var INTENSIVO_PRICE = 13000;
   var INTENSIVO_DURACION = "1.5";
@@ -1382,25 +1377,14 @@
   }
 
   var TIPOS = [
-    { id: "universitario", label: "Plan Común y Especialidad FCFM", sub: "DIM / DFI", price: INDIVIDUAL_PRICE },
-    { id: "bachiller", label: "Bachillerato", sub: "", price: INDIVIDUAL_PRICE },
-    { id: "media", label: "Enseñanza Media", sub: "", price: INDIVIDUAL_PRICE },
-    { id: "paes", label: "Preparación PAES", sub: "", price: INDIVIDUAL_PRICE }
+    { id: "universitario", label: "Clase FCFM", sub: "", price: INDIVIDUAL_PRICE },
+    { id: "civil", label: "Ingeniería Civil", sub: "", price: INDIVIDUAL_PRICE }
   ];
 
   // Cursos disponibles, según el tipo de clase elegido. Cada tipo define sus
   // propias "áreas" (pestañas del selector de área) y, dentro de cada área,
   // la lista de cursos específicos.
   var CURSOS_BY_TIPO = {
-    media: {
-      "Matemáticas": ["Matemáticas"],
-      "Física": ["Física"],
-      "Química": ["Química"]
-    },
-    paes: {
-      "Matemáticas": ["Matemática M1", "Matemática M2"],
-      "Ciencias": ["Electivo Física"]
-    },
     universitario: {
       "DIM": [
         "Introducción al Cálculo",
@@ -1417,14 +1401,19 @@
         "Electromagnetismo",
         "Termodinámica"
       ],
-      "Especialidad": [
-        "Probabilidades y Estadística",
-        "Optimización",
-        "Evaluación de Proyectos"
+      "DII": [
+        "Economía"
+      ],
+      "DIC": [
+        "Ingeniería Estructural",
+        "Mecánica de Sólidos",
+        "Resistencia de Materiales",
+        "Hormigón Armado",
+        "Diseño en Acero",
+        "Dinámica de Estructuras",
+        "Ingeniería Hidráulica",
+        "Mecánica de Fluidos"
       ]
-    },
-    bachiller: {
-      "Bachiller": ["Matemáticas I", "Matemáticas II", "Física I", "Física II", "Economía"]
     }
   };
 
@@ -1589,13 +1578,13 @@
     return false;
   }
   function precontrolTermoAvailable() {
-    return currentTipoId() === "universitario" && document.getElementById("curso").value === PRECONTROL_TERMO_CURSO;
+    return false;
   }
   function isPrecontrolTermoActive() {
     return precontrolTermoAvailable() && document.getElementById("precontrol-termo").checked;
   }
   function precontrolFisModAvailable() {
-    return currentTipoId() === "universitario" && document.getElementById("curso").value === PRECONTROL_FISMOD_CURSO;
+    return false;
   }
   function isPrecontrolFisModActive() {
     return precontrolFisModAvailable() && document.getElementById("precontrol-fismod").checked;
@@ -1943,7 +1932,7 @@
     var endDate = new Date(startDate.getTime() + durMin * 60000);
     var end = endDate.getFullYear() + pad(endDate.getMonth() + 1) + pad(endDate.getDate()) +
       "T" + pad(endDate.getHours()) + pad(endDate.getMinutes()) + "00";
-    var text = "Clase de " + (b.area === "matematicas" ? "Matemáticas" : "Física") + " — " + b.curso;
+    var text = "Clase con Matías — " + b.curso;
     var modoTxt = b.personas >= 2 ? "grupal" : (b.esSemanal ? "plan semanal" : "individual");
     var details = "Clase con Matías (" + tipoLabel(b.tipo) + ", " + modoTxt + ")\nCurso: " + b.curso +
       "\nPersonas: " + b.personas + "\nAlumno/a: " + b.nombre + "\nWhatsApp: " + b.whatsapp +
@@ -2349,3 +2338,5 @@
   document.addEventListener("DOMContentLoaded", init);
 })();
 </script>
+
+</body></html>
